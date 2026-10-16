@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create your account | ChatHub</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-database-compat.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">ChatHub</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Create your account</h2>
+      <p class="subtext">Sign up to start chatting.</p>
+
+      <form id="form">
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input id="fullName" type="text" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" minlength="6" required>
+        </div>
+
+        <p class="error" id="error"></p>
+        <button class="btn" id="btn" type="submit">Sign Up</button>
+      </form>
+
+      <p class="switch-text">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </main>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    $('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = $('btn');
+      btn.disabled = true;
+      btn.textContent = 'Loading...';
+      $('error').textContent = '';
+
+      try {
+        const cred = await auth.createUserWithEmailAndPassword(
+          $('email').value.trim(),
+          $('password').value
+        );
+        await cred.user.updateProfile({ displayName: $('fullName').value.trim() });
+        sessionStorage.setItem('newUser', '1');
+        location.href = 'dashboard.html';
+      } catch (err) {
+        $('error').textContent = err.message;
+        btn.disabled = false;
+        btn.textContent = 'Sign Up'; 
+      }
+    });
+  </script>
+</body>
+</html>

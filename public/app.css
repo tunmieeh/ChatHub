@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+  --bg: #f6f5fb;
+  --white: #fff;
+  --text: #1b1838;
+  --muted: #6f6c8a;
+  --primary: #6c4cf1;
+  --primary-2: #a34cf1;
+  --accent: #ff7a59;
+  --border: #e6e3f5;
+  --danger: #e5484d;
+  --radius: 16px;
+  --shadow: 0 12px 40px rgba(60, 40, 140, .12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  background-color: #f4f2fb;
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(rgba(108, 76, 241, .14) 1.2px, transparent 1.2px),
+    radial-gradient(700px 500px at 100% -10%, rgba(163, 76, 241, .30), transparent),
+    radial-gradient(600px 500px at -10% 105%, rgba(255, 122, 89, .26), transparent),
+    radial-gradient(400px 300px at 50% 55%, rgba(108, 76, 241, .08), transparent);
+  background-size: 24px 24px, auto, auto, auto;
+}
+
+a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ===== Top navigation (index, signup, login) ===== */
+header nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 18px 32px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+header nav a:last-child {
+  background: var(--text);
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: 99px;
+}
+
+header nav a.logo {
+  margin-right: auto;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 0;
+}
+
+main {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* ===== Home page ===== */
+.hero {
+  text-align: center;
+  max-width: 620px;
+  margin-top: 9vh;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* ===== Buttons ===== */
+.btn,
+.get-started {
+  display: inline-block;
+  padding: 13px 26px;
+  border: 0;
+  border-radius: 99px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(108, 76, 241, .35);
+  transition: transform .15s;
+}
+
+.btn:hover,
+.get-started:hover {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: wait;
+  transform: none;
+}
+
+.btn-danger {
+  background: var(--white);
+  color: var(--danger);
+  box-shadow: none;
+  border: 1px solid var(--border);
+  padding: 9px 18px;
+}
+
+/* ===== Signup and login card ===== */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 38px;
+  box-shadow: var(--shadow);
+  margin-top: 4vh;
+}
+
+.card h2 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  margin-bottom: 6px;
+}
+
+.subtext {
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.field input,
+.chat-form input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--bg);
+}
+
+.field input:focus,
+.chat-form input:focus {
+  outline: 0;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(108, 76, 241, .15);
+}
+
+.card .btn {
+  width: 100%;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+  min-height: 20px;
+  margin-bottom: 10px;
+}
+
+.switch-text {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ===== Dashboard ===== */
+.dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.welcome {
+  color: var(--muted);
+}
+
+.welcome strong {
+  color: var(--text);
+}
+
+/* ===== Chat box ===== */
+.chat-container {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 32px);
+  max-width: 820px;
+  margin: 20px auto;
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.chat-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-header h3 {
+  font-size: 18px;
+}
+
+.chat-header p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg);
+}
+
+.message {
+  max-width: 72%;
+  padding: 11px 16px;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(60, 40, 140, .08);
+  align-self: flex-start;
+  overflow-wrap: anywhere;
+}
+
+.message.mine {
+  align-self: flex-end;
+  border-radius: 18px 18px 4px 18px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+}
+
+.sender {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.mine .sender {
+  display: none;
+}
+
+.time {
+  display: block;
+  font-size: 11px;
+  opacity: .65;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.chat-form {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.chat-form .btn {
+  width: auto;
+}
+
+@media (max-width: 600px) {
+  .welcome {
+    display: none;
+  }
+
+  .message {
+    max-width: 88%;
+  }
+
+  .card {
+    padding: 28px;
+  }
+}
+
+/* ===== Welcome popup and system messages ===== */
+.toast {
+  position: fixed;
+  top: 78px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: var(--text);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 99px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: .4s;
+  z-index: 10;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.system {
+  align-self: center;
+  background: rgba(108, 76, 241, .1);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+}
+
+/* ===== Edit and delete (hover icons) ===== */
+.meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+  font-size: 11px;
+}
+
+.meta .time {
+  display: inline;
+  margin: 0;
+}
+
+.meta .edited {
+  opacity: .75;
+  font-style: italic;
+}
+
+.icon-btn {
+  background: none;
+  border: 0;
+  padding: 3px;
+  margin: 0;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 0;
+  transition: opacity .15s;
+}
+
+.message.mine:hover .icon-btn,
+.message.mine.show .icon-btn {
+  opacity: .85;
+  pointer-events: auto;
+}
+
+.message.mine .icon-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.icon-btn svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.edit-input {
+  width: 100%;
+  min-width: 160px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  color: var(--text);
+  outline: 2px solid rgba(255, 255, 255, .6);
+}
+
+/* ===== Delete confirmation box ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 24, 56, .45);
+  display: none;
+  place-items: center;
+  z-index: 50;
+}
+
+.overlay.open {
+  display: grid;
+}
+
+.dialog {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px;
+  width: min(320px, calc(100% - 32px));
+  box-shadow: 0 16px 50px rgba(0, 0, 0, .3);
+}
+
+.dialog h4 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.dialog p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.dialog .actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.dialog button {
+  border: 0;
+  border-radius: 99px;
+  padding: 10px 20px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dialog .cancel {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.dialog .confirm {
+  background: var(--danger);
+  color: #fff;
+}
